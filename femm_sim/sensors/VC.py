@@ -171,40 +171,6 @@ class Analysis:
 
         coil_forces = uppout_prop['force']+lowout_prop['force']
 
-        plt.plot(np.real(inn_prop['position']), abs(uppout_prop['force']), 'o--', label = 'upper')
-        plt.plot(np.real(inn_prop['position']), abs(lowout_prop['force']), 'o--', label = 'lower')
-        plt.xlabel('Inner Coil Position [mm]')
-        plt.ylabel('Fitted Magnet Force [N/A]')
-        plt.title('Actuation force')
-        plt.legend()
-        plt.grid()
-        plt.show()
-
-        #plt.plot(np.real(inn_prop['position']), fit_forces, 'o--', label = 'fit')
-        #plt.plot(np.real(inn_prop['position']), mag_prop['Magnet_forces'], 'o--', label = 'unfit')
-        plt.plot(np.real(inn_prop['position']), abs(coil_forces), 'o--')
-        plt.ylabel(r'Normalised coil force $[\frac{N}{A}]$', fontsize=13, fontname='Arial')
-        plt.xlabel('Primary Coil Position[in mm] relative to the secondary', fontsize=13, fontname='Arial')
-        plt.title(r'Actuation force with 1A DC excitation' + '\n' + 'ETpathfinder design type : ' + self.design_type, fontsize=14, fontname='Arial')
-        plt.grid(b=True)
-        plt.legend()
-        plt.xticks(rotation=0, fontsize=14)
-        plt.tight_layout()
-        #plt.savefig("C:\\Users\\kumar\\OneDrive\\Desktop\\new\\pic\\simul\\summary\\B_vc_for", format = 'pdf')
-        plt.show()
-
-        plt.plot(np.real(inn_prop['position']), abs(coil_forces)/np.max(abs(coil_forces)), 'o--')
-        plt.ylabel(r'Stability [%]', fontsize=13, fontname='Arial')
-        plt.xlabel('Primary Coil Position[in mm] relative to the secondary', fontsize=13, fontname='Arial')
-        plt.title(r'Force stability with 1A DC excitation' + '\n' + 'ETpathfinder design type : ' + self.design_type,
-                  fontsize=14, fontname='Arial')
-        plt.grid(b=True)
-        plt.legend()
-        plt.xticks(rotation=0, fontsize=14)
-        plt.tight_layout()
-        #plt.savefig("C:\\Users\\kumar\\OneDrive\\Desktop\\new\\pic\\simul\\summary\\B_vc_stab", format='pdf')
-        plt.show()
-
         if self.save:
             np.savez_compressed(self.filename, Design_parameters = input_par2, Input_parameters = input_par1, coil_config_parameters = coil_con,Boundary_conditions = bc_conditions_mesh,
                                 Innercoil_config=position.inncoil(), UpperOutcoil_config=position.upp_outcoil(), LowerOutercoil_config=position.low_outcoil(),
@@ -213,5 +179,6 @@ class Analysis:
                                 UOC_voltages = uppout_prop['voltage'], LOC_voltages = lowout_prop['voltage'], IC_voltages = inn_prop['voltage'],
                                 IC_positions = inn_prop['position'], IC_flux=inn_prop['flux'], UOC_flux=uppout_prop['flux'], LOC_flux=lowout_prop['flux'],
                                 Inn_Uppout_Lowout_DCR_as_per_catalog = [inn_dc, out_dc, lowout_dc])
+
 
         return {'coil_positions': np.real(inn_prop['position']), 'Magnet_forces': abs(mag_prop['Magnet_forces'])}
