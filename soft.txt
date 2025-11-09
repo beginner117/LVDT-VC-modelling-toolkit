@@ -1,0 +1,23 @@
+ssh -i .ssh/id_rsa -L 6011:192.168.3.236:3389 etpf@elpc7.cmi.uantwerpen.be
+
+ssh -i .ssh/id_rsa -L 6022:192.168.3.93:22 etpf@elpc7.cmi.uantwerpen.be
+             -p 6022 simulation@0
+
+ssh -i .ssh/id_rsa -L 2222:elpc1:22 etpf@elpc7.cmi.uantwerpen.be
+
+
+
+
+
+
+kicad
+pycharm
+vscode
+matlab
+femm
+autodesk
+tina
+adobe
+julia
+mobaxterm
+

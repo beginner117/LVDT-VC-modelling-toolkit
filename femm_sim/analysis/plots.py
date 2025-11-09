@@ -1,0 +1,62 @@
+import sys
+import numpy as np
+import plot_design
+import warnings
+warnings.filterwarnings('ignore')
+import matplotlib.pyplot as plt
+
+
+
+# graph = plot_design.VC(0)
+#
+# graph.force_fit('coil_norm')
+# graph.force('stability')
+# graph.force('coil_norm')
+# graph.force('mag_norm')
+# graph.force_fit('coil_norm')
+# graph.force_fit('mag_norm')
+# graph.force_fit('stability')
+# graph.force_fit('rel_error')
+# graph.force_fit('stability')
+# graph.force_fit('slopes')
+# graph.resistance('DC_resistance')
+graph = plot_design.Lvdt(0)
+# graph.norm_fit('signal')
+# # graph.norm_fit('drift')
+graph.norm_fit('rel_error')
+# graph.norm_sig()
+# graph.info()
+# graph.norm_fit('drift')
+# graph.norm_fit('signal')
+# graph.resistance('impedance')
+# graph.power()
+#graph.force_fit('error')
+#graph.stability()
+
+
+# b = np.load("C:\\Users\\kumar\\PycharmProjects\\lvdtsimulations\\femm_sim\\data\\summary\\J_vc.npz", allow_pickle=True)
+# print(b.files)
+# print(b['Design_parameters']); print(b['Input_parameters']); print(b['block_dimensions'])
+# lo_inn_for = np.array([3.22, 3.241, 3.25, 3.2425, 3.2415, 3.19, 3.175])
+# plt.plot(b['block_forces'],'o--', label='block')
+# plt.plot(b['Mag_forces'],'o--', label='mag')
+# plt.plot(b['IC2_forces'],'o--', label='ic2')
+# plt.plot(pos.real, (nor_vol1),'o--', label='normal')
+# plt.plot([-3, -2, -1, 0, 1, 2, 3], lo_inn_for*100/np.max(lo_inn_for), 'o--')
+# plt.ylabel(' VC force/Maximum VC force [%]', fontsize=13, fontname='Arial')
+# plt.title('Actuation force stability \n [ETpf design type:C, 1A DC excitation]', fontsize=14, fontname='Arial')
+# plt.xlabel('Primary coil position relative to the outer coil[mm]', fontsize=13, fontname='Arial')
+# plt.xticks(rotation=0, fontsize=14)
+# plt.grid(b=True)
+# plt.tight_layout()
+#plt.legend(title = 'Input\ncurrent')
+#plt.savefig("C:\\Users\\kumar\\OneDrive\\Desktop\\new\\pic\\simul\\summary\\C_vc_stab.pdf", format = 'pdf')
+# #plt.ylim(0, 1.75)
+# plt.xlabel('Relative Inner coil Position (mm)')
+# plt.ylabel('Normalised response [V_output/V_input]')
+# #plt.ylabel('relative fit error [%]')
+# plt.title('Top_up LVDT, 20mA_10Khz Input \n full fit, (response normalized with current)')
+# plt.grid()
+# plt.legend()
+# plt.show()
+# print(np.max(b['block_forces']), np.max(b['Mag_forces']), np.max(b['IC2_forces']))
