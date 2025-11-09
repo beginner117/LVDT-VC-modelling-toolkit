@@ -124,14 +124,6 @@ class Analysis:
         Upp_resistance = abs(uppout_prop['voltage'] / uppout_prop['current'])
         print('upp out resistance as per femm :', abs(Upp_resistance))
         print('magnet force :', np.real(mag_for['Magnet_forces']))
-        plt.plot(np.real(uppout_prop['position']),
-                 (np.real(mag_for['Magnet_forces'] / uppout_prop['current'])), 'o--')
-        plt.xlabel('Coil (centre) Position relative to Magnet (centre) [mm]')
-        plt.ylabel('Normalised Magnet Force [N/A]')
-        plt.title('Actuation Force with 1A DC excitation \n type-I (mirror tower actuators)')
-        plt.grid()
-        plt.savefig("C:\\Users\\kumar\\OneDrive\\Desktop\\new\\pic\\simul\\summary\\typeI_for", format='pdf')
-        plt.show()
 
         if self.save:
             if self.sim_type == 'FEMM+ana':
@@ -149,5 +141,6 @@ class Analysis:
                 np.savez_compressed(self.filename, Design_type=input_par3, Design = input_par2, Input_parameters = input_par1, UpperOutcoil_config=position.upp_outcoil(),
                                     UOC_positions = uppout_prop['position'], UOC_forces = uppout_prop['force'], Mag_forces = mag_for['Magnet_forces'],Boundary_conditions = bc_conditions_mesh,
                                     UOC_flux=uppout_prop['flux'], UOC_voltages = uppout_prop['voltage'], UOC_currents=uppout_prop['current'])
+
 
         return {'coil_positions': np.real(uppout_prop['position']), 'magnet_forces': np.real(mag_for['Magnet_forces'])}
