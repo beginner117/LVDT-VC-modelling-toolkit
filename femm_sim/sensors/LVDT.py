@@ -161,51 +161,6 @@ class Analysis:
             fit_sig = c1*np.real(inn_prop['position']) + c2
             fit_error = Norm_OutCoil_Signals - fit_sig
 
-        # plt.plot(np.real(inn_prop['position']), Norm_OutCoil_Signals_v, 'o')
-        # plt.ylabel(r'Normalised LVDT response $[\frac{{V}}{{V}}]$', fontsize=14, fontname='Arial')
-        # plt.xlabel('Primary Coil Position[in mm] relative to the secondary', fontsize=14, fontname='Arial')
-        # plt.title(r'LVDT Sensitivity $[\frac{{V}^{out}}{{V}^{in}}]$ with 20mA sinusoid excitation' + '\n' + 'ETpathfinder design type : ' + self.design_type)
-        # plt.grid(b=True)
-        # plt.legend()
-        # plt.xticks(rotation=0, fontsize=14)
-        # plt.tight_layout()
-        #plt.savefig("C:\\Users\\kumar\\OneDrive\\Desktop\\new\\pic\\simul\\typeA1_norm_v.pdf", format = 'pdf')
-
-        # f_name_c = self.design_type + '_norm_c.pdf'
-        # f_name_l = self.design_type + '_lin_c.pdf'
-
-        # plt.plot(np.real(inn_prop['position']), Norm_OutCoil_Signals, 'o--')
-        # plt.ylabel(r'Normalised LVDT response $[\frac{{V}^{out}}{{A}^{in}}]$', fontsize=13, fontname='Arial')
-        # plt.xlabel('Primary Coil Position[in mm] relative to the secondary', fontsize=13, fontname='Arial')
-        # plt.title(r'LVDT Sensitivity with 20mA-10kHz sinusoid excitation' + '\n' + 'ETpathfinder design type : ' , fontsize=14, fontname='Arial')
-        # plt.grid(b=True)
-        # plt.legend()
-        # plt.xticks(rotation=0, fontsize=14)
-        # plt.tight_layout()
-        # #plt.savefig("C:\\Users\\kumar\\OneDrive\\Desktop\\new\\pic\\simul\\summary\\f_name_c", format = 'pdf')
-        # plt.show()
-
-        # pos_upd = Norm_OutCoil_Signals / abs(c1)
-        # pos_dri = abs(inn_prop['position']) - abs(pos_upd)
-        # plt.plot(np.real(inn_prop['position'][1:20]), pos_dri[1:20] * 1000, 'o--')
-        # plt.xlabel('Inner Coil Position [mm]')
-        # plt.ylabel('Position drift [μm]')
-        # plt.title(r'LVDT drift [in μm] with 20mA sinusoid excitation' + '\n' + '( sim range:±5mm,0.5mm step,±1mm fit)')
-        # plt.grid()
-        # plt.show()
-
-        # plt.plot(np.real(inn_prop['position']), abs(fit_error)*100/abs(fit_sig), 'o--')
-        # plt.ylabel('Relative error [%]', fontsize=14, fontname='Arial')  # [$\dfrac{abs(fit error)}{actual}$]
-        # plt.xlabel('Primary Coil Position[in mm] relative to the secondary', fontsize=14, fontname='Arial')
-        # plt.title(r'LVDT linearity with 20mA-10khz sinusoid excitation' + '\n' + 'ETpathfinder design type : ' + self.design_type + '  (±1mm fit)')
-        # plt.grid(b=True)
-        # plt.legend()
-        # plt.xticks(rotation=0, fontsize=14)
-        # plt.tight_layout()
-        # plt.ylim(0, 2)
-        # #plt.savefig("C:\\Users\\kumar\\OneDrive\\Desktop\\new\\pic\\simul\\summary\\f_name_l", format = 'pdf')
-        # plt.show()
-
         if self.save:
             np.savez_compressed(self.filename, Design_parameters = input_par2, Input_parameters = input_par1, coil_config_parameters = coil_con, Boundary_conditions = bc_conditions_mesh,
                                 Innercoil_config = position.inncoil(), UpperOutcoil_config = position.upp_outcoil(), LowerOutercoil_config = position.low_outcoil(), IC_positions = inn_prop['position'],
@@ -217,4 +172,5 @@ class Analysis:
 
         return {'coil_positions': np.real(inn_prop['position']), 'slope':np.real(c1),
                 'norm_signals':Norm_OutCoil_Signals, 'rel_error':abs(fit_error)*100/abs(fit_sig)}
+
 
