@@ -1,12 +1,14 @@
+# 🧲 FEMM-Based Simulation Toolkit for LVDTs & VCs (ETpathfinder)
+This repository provides a modular Python interface to simulate Linear Variable Differential Transformers (LVDTs) and Voice Coils (VCs), including custom geometries used in the ETpathfinder project. Simulations are powered by **FEMM** (Finite Element Method Magnetics), with Python integration via the `pyFEMM` package—eliminating the need for LabVIEW or other GUI-based tools.
 
-This repository contains the modules with FEMM code to simulate the LVDTs & VCs in general and some customized modules to simulate the designs used in ETpathfinder.
-Here we are using the pyFEMM package to interface the FEMM functions with python to easily simulate, analyse the results without the need for software like Labview. FEMM is only available on Windows operating systems the repository python code will only work on Windows systems with FEMM installed.
-
+> ⚠️ **Note:** FEMM is Windows-only. This repository will only work on **Windows systems** with FEMM installed.
+## 🚀 Quick Start
 Below, you will find some short instructions on how to install the software. 
 
     Install the FEMM software on your Windows machine: https://www.femm.info/wiki/HomePage Go to download page and follow instructions.
     Assuming you have a working python 3.10.1 version, install pyFEMM: https://www.femm.info/wiki/pyFEMM. You can do this with pip via: pip install pyfemm. On the linked page you can also find the pyFEMM manual.
-    
+🍎 Mac Users
+
     For Mac users, install Whisky or Wine (Whisky for new ARM mac) followed by installing femm 42. Find the path of femm.exe and update the text file named 'femmpath.txt' with the path. The default text file contains an example path. 
     (put it in git ignore after modification). 
 
@@ -104,5 +106,6 @@ for chainging the coil excitations, add the argument 'input_current' to the 'exe
 (Make sure the modified/newly added material above is available in the FEMM material library. If not, the new material must be defined with all the properties in the 'feed.py' module)
 
 NOTE2 - A lot of other information like resistances, currents e.t.c are obtained from the simulation. To know them, load the saved '.npz' file and look for all the data
+
 
 For a better understanding, a model code to simulate LVDTs is given in 'example.md' file. Please go through that.   
