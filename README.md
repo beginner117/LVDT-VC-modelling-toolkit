@@ -1,4 +1,4 @@
-# 🧲 FEMM-Based Simulation Toolkit for LVDTs & VCs (ETpathfinder)
+# 🧲 FEMM-Based Simulation Toolkit for LVDTs & VCs 
 This repository provides a modular Python interface to simulate Linear Variable Differential Transformers (LVDTs) and Voice Coils (VCs), including custom geometries used in the ETpathfinder project. Simulations are powered by **FEMM** (Finite Element Method Magnetics), with Python integration via the `pyFEMM` package—eliminating the need for LabVIEW or other GUI-based tools.
 
 > ⚠️ **Note:** FEMM is Windows-only. This repository will only work on **Windows systems** with FEMM installed.
@@ -109,3 +109,4 @@ NOTE2 - A lot of other information like resistances, currents e.t.c are obtained
 
 
 For a better understanding, a model code to simulate LVDTs is given in 'example.md' file. Please go through that.   
+
