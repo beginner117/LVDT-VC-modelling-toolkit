@@ -148,11 +148,11 @@ class DynamicSimulationGUI:
     def update_image_based_on_sensor_type(self, sensor_type, inner_label, inner_entries, outer_entries):
         """Update the image based on the sensor type"""
         if sensor_type == 'LVDT':
-            self.image_path = "lvdt2.png"  # LVDT image
+            self.image_path = "femm_sim/lvdt2.png"  # LVDT image
         if sensor_type == 'VC':
-            self.image_path = "lvdt_vc.png"  # LVDT+VC image
+            self.image_path = "femm_sim/lvdt_vc.png"  # LVDT+VC image
         if sensor_type == 'LVDT_com':
-            self.image_path = "lvdt_com.png"  # LVDT commercial image
+            self.image_path = "femm_sim/lvdt_com.png"  # LVDT commercial image
             inner_label.grid()  # Show the inner coil dimensions
             for entry in inner_entries:
                 entry.grid()  # Show inner coil input fields
@@ -164,7 +164,7 @@ class DynamicSimulationGUI:
             self.inner_label.grid()
             self.inner_entry.grid()
         elif sensor_type == 'VC_only':
-            self.image_path = "lvdt3.png"  # VC_only image
+            self.image_path = "femm_sim/lvdt3.png"  # VC_only image
             inner_label.grid_remove()  # Hide the inner coil dimensions
             for entry in inner_entries:
                 entry.grid_remove()  # Hide inner coil input fields
@@ -335,6 +335,7 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = DynamicSimulationGUI(root)
     root.mainloop()
+
 
 
 
