@@ -25,7 +25,7 @@ class Analysis:
     def simulate(self):
         """"
         simulates the Voice coil performance"""
-        with open('paths.txt', 'r') as file:
+        with open('femm_sim/paths.txt', 'r') as file:
             path1 = file.read()
         try:
             femm.openfemm()  # The package must be initialized with the openfemm command.
@@ -190,4 +190,5 @@ class Analysis:
 
         return {'coil_positions': np.real(inn_prop['position']), 'slope':np.real(c1),
                 'norm_signals':Norm_OutCoil_Signals, 'rel_error':abs(fit_error)*100/abs(fit_sig)}
+
 
