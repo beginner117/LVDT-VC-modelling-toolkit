@@ -21,7 +21,7 @@ class Analysis:
         self.input_excitation = input_excitation
         self.bc = boundary_conditions
     def simulate(self):
-        with open('femm_sim/paths.txt', 'r') as file:
+        with open('paths.txt', 'r') as file:
             path1 = file.read()
         try:
             femm.openfemm()  # The package must be initialized with the openfemm command.
@@ -144,4 +144,5 @@ class Analysis:
 
 
         return {'coil_positions': np.real(uppout_prop['position']), 'magnet_forces': np.real(mag_for['Magnet_forces'])}
+
 
