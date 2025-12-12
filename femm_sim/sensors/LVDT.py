@@ -23,7 +23,7 @@ class Analysis:
         self.input_excitation = input_excitation
         self.bc = boundary_conditions
     def simulate(self):
-        with open('femm_sim/paths.txt', 'r') as file:
+        with open('paths.txt', 'r') as file:
             path1 = file.read()
         try:
             femm.openfemm(1)   # The package must be initialized with the openfemm command.
@@ -172,6 +172,7 @@ class Analysis:
 
         return {'coil_positions': np.real(inn_prop['position']), 'slope':np.real(c1),
                 'norm_signals':Norm_OutCoil_Signals, 'rel_error':abs(fit_error)*100/abs(fit_sig)}
+
 
 
 
