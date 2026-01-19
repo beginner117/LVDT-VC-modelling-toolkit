@@ -56,10 +56,10 @@ Here is a explanation for simulating a typical LVDT/VC. One can model one or mor
     sim_code = femm_simulation.Position_sensor(sensor_type = ['LVDT'], save = True,
     sim_range = {'steps_size_offset': [[1, 0.5, -0.5]]},
     data = {'filename(s)': ['I_long'], 'is default': ['yes'], 'design or parameter': ['A']},
-    material_prop = ['32 AWG', '32 AWG', "N40"], dimensions = coil_geo, boundary = [150, 'Air', 0.5, 300, 'Air', 1, 'Outside'],
-)
+    material_prop = ['32 AWG', '32 AWG', "N40"], dimensions = {'inner':[24, 11, 6], 'outer':[13.5, 35, 5, 54.5], 'magnet':[40, 10]}, 
+    boundary = [150, 'Air', 0.5, 300, 'Air', 1, 'Outside'])
 
-a = sim_code.execute()
+    a = sim_code.execute()
 
 
     ______INPUT_______
@@ -78,11 +78,11 @@ a = sim_code.execute()
 OPTIONAL
 
     material_prop = list containing (i) inner coil material (ii) outer coil material (iii) magnet material
-    simulation_type = list with strings 'semi_analytical' for analytical calculation.
     dimensions = dictionary with the coil geometry with 'inner', 'outer', 'magnet' as keys and corresponding dimensions (in mm)in lists as values.
                Values of the keys are height, radius, layers, distance (for the 'outer') in mm for the coils and length, diameter (in mm) for the magnet
                Example - {'inner':[24, 11, 6], 'outer':[13.5, 35, 7, 54.5], 'magnet':[40, 10]}
-        (In simulations using the above 'lvdt_dim' argument, make sure to input 'no' to the argument 'is default' and any random string for the argument 'design or parameter'
+        (In simulations using the above 'dimensions' argument, make sure to input 'no' to the argument 'is default' and any random string for the argument 'design or parameter'
+    simulation_type = list with strings 'semi_analytical' for analytical calculation
 
                NOTE - Alternatively, this geometry can also be defined in the 'feed.py' module with the apropriate name following the order of the existing designs in that module. 
                MOST IMPORTANT, add the defined design as a value and your choice of name(for that design) as a key in the dictionary 'data' to call it directly with the name.
@@ -106,7 +106,7 @@ Here are the default assumptions
             Boundary conditions 
 
     material - Air
-    Region 1, mesh - sphere with radius 100mm, 
+    Region 1, mesh - sphere with radius 150mm, 
     Region 2, mesh - sphere with radius 300mm, auto mesh
     #For analytical calculations:
 
@@ -118,5 +118,6 @@ NOTE2 - A lot of other information like resistances, currents e.t.c are obtained
 
 
 For a better understanding, a model code to simulate LVDTs is given in 'example.md' file. Please go through that.   
+
 
 
