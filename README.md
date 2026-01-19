@@ -51,12 +51,16 @@ Here is the list of modules:
     analytical_simulation - contains all the methods that call and execute LVDT and VC simulations analytically
     single_coil.py - models a single coil
 
-Here is a explanation for simulating a typical LVDT/VC with just two lines. One can model one or more sensors simultaneously
+Here is a explanation for simulating a typical LVDT/VC. One can model one or more sensors simultaneously
 
-    sim_code = femm_simulation.Position_sensor(sensor_type=, save=, sim_range={'steps_size_offset':},
-                                    data = {'filename(s)':, 'is default':, 'design or parameter':})
+    sim_code = femm_simulation.Position_sensor(sensor_type = ['LVDT'], save = True,
+    sim_range = {'steps_size_offset': [[1, 0.5, -0.5]]},
+    data = {'filename(s)': ['I_long'], 'is default': ['yes'], 'design or parameter': ['A']},
+    material_prop = ['32 AWG', '32 AWG', "N40"], dimensions = coil_geo, boundary = [150, 'Air', 0.5, 300, 'Air', 1, 'Outside'],
+)
 
-    sim_code.execute()
+a = sim_code.execute()
+
 
     ______INPUT_______
     sensor_type = list with names of sensors that should be simulated
@@ -65,6 +69,11 @@ Here is a explanation for simulating a typical LVDT/VC with just two lines. One 
     filename(s) = name(s) of the simulated file(s) 
     is default = 'yes' if the simulation is for a preliminary NIKHEF designs and 'no' if not
     design or parameter = list with design type (if 'is default' is 'yes') or a random string (if 'is default is 'no')
+    material_prop = list containing (i) inner coil material (ii) outer coil material (iii) magnet material
+    dimensions = dictionary with the coil geometry with 'inner', 'outer', 'magnet' as keys and corresponding dimensions (in mm)in lists as values.
+               Values of the keys are height, radius, layers, distance (for the 'outer') in mm for the coils and length, diameter (in mm) for the magnet
+               Example - {'inner':[24, 11, 6], 'outer':[13.5, 35, 7, 54.5], 'magnet':[40, 10]}
+    boundary = list containing boundary radius, name, and mesh size (in this order) of two air space regions
     
 OPTIONAL
 
@@ -109,4 +118,5 @@ NOTE2 - A lot of other information like resistances, currents e.t.c are obtained
 
 
 For a better understanding, a model code to simulate LVDTs is given in 'example.md' file. Please go through that.   
+
 
