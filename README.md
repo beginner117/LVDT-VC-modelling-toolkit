@@ -66,7 +66,7 @@ Here is a explanation for simulating a typical LVDT/VC. One can model one or mor
     save = 'True' to save all the simulated files or 'False' to not save the files
     sim_range = list containg a list (nested list) of total steps, grid size and offset
     filename(s) = name(s) of the simulated file(s) 
-    is default = 'yes' if the simulation is for a preliminary NIKHEF designs and 'no' if not
+    is default = 'yes' if the simulation is for a default ETpathfinder design and 'no' if not
     design or parameter = list with design type (if 'is default' is 'yes') or a random string (if 'is default is 'no')
     material_prop = list containing (i) inner coil material (ii) outer coil material (iii) magnet material
     dimensions = dictionary with the coil geometry with 'inner', 'outer', 'magnet' as keys and corresponding dimensions (in mm)in lists as values.
@@ -115,6 +115,7 @@ NOTE2 - A lot of other information like resistances, currents e.t.c are obtained
 
 
 For a better understanding, a model code to simulate LVDTs is given in 'example.md' file. Please go through that.   
+
 
 
 
