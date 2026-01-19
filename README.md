@@ -97,26 +97,25 @@ Here are the default assumptions
 
     wire material - 32 AWG
     magnet type - N40
-    Inner coil excitation (for LVDT) - 10Khz, 20mA sinusoidal wave
-    Outer coil excitation (for VC, VC_only) - 1A DC sinusoidal wave
+    Inner coil excitation (for LVDT) - 10 kHz, 20 mA sinusoidal wave
+    Outer coil excitation (for VC, VC_only) - 1A DC
     Units - millimeters
     precision - 1.0e-10
 
             Boundary conditions 
 
     material - Air
-    Region 1, mesh - sphere with radius 150mm, 
-    Region 2, mesh - sphere with radius 300mm, auto mesh
-    #For analytical calculations:
+    Region 1 - sphere with radius 150mm, mesh size : 0.5
+    Region 2 - sphere with radius 300mm, mesh size : 1
+    
 
-NOTE1 - To modify any of the above parameters, add the optinal argument 'material_prop' explained above in the sim_code instance to change the materials modelled in the simulation and 
-for chainging the coil excitations, add the argument 'input_current' to the 'execute' method. 
-(Make sure the modified/newly added material above is available in the FEMM material library. If not, the new material must be defined with all the properties in the 'feed.py' module)
+NOTE1 - Make sure the modified/newly added material above is available in the FEMM material library. If not, the new material must be defined with all the properties in the 'feed.py' module.
 
 NOTE2 - A lot of other information like resistances, currents e.t.c are obtained from the simulation. To know them, load the saved '.npz' file and look for all the data
 
 
 For a better understanding, a model code to simulate LVDTs is given in 'example.md' file. Please go through that.   
+
 
 
 
