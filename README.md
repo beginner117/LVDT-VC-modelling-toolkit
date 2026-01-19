@@ -53,11 +53,10 @@ Here is the list of modules:
 
 Here is a explanation for simulating a typical LVDT/VC. One can model one or more sensors simultaneously
 
-    sim_code = femm_simulation.Position_sensor(sensor_type = ['LVDT'], save = True,
-    sim_range = {'steps_size_offset': [[1, 0.5, -0.5]]},
-    data = {'filename(s)': ['I_long'], 'is default': ['yes'], 'design or parameter': ['A']},
-    material_prop = ['32 AWG', '32 AWG', "N40"], dimensions = {'inner':[24, 11, 6], 'outer':[13.5, 35, 5, 54.5], 'magnet':[40, 10]}, 
-    boundary = [150, 'Air', 0.5, 300, 'Air', 1, 'Outside'])
+    sim_code = femm_simulation.Position_sensor(sensor_type = ['LVDT'], save = True, sim_range = {'steps_size_offset': [[1, 0.5, -0.5]]},
+               data = {'filename(s)': ['I_long'], 'is default': ['yes'], 'design or parameter': ['A']},
+               material_prop = ['32 AWG', '32 AWG', "N40"], dimensions = {'inner':[24, 11, 6], 'outer':[13.5, 35, 5, 54.5], 'magnet':[40, 10]}, 
+               boundary = [150, 'Air', 0.5, 300, 'Air', 1, 'Outside'])
 
     a = sim_code.execute()
 
@@ -118,6 +117,7 @@ NOTE2 - A lot of other information like resistances, currents e.t.c are obtained
 
 
 For a better understanding, a model code to simulate LVDTs is given in 'example.md' file. Please go through that.   
+
 
 
 
